@@ -40,21 +40,14 @@ namespace QuizGameApp2024
             try
             {
                 log.Info("The list of questions is loaded...");
-                //Declare local variables
-                // To store each line(str) from readLine() 
                 string questionInString;
 
-                //To gather all the lines from readLine() into List
                 List<string> questionsList = new List<string>();
 
-                // Using StreamReader to read the input file -- questions.csv
                 StreamReader inputFile;
                 var file = ConfigurationManager.AppSettings["QuestionsPath"];
                 inputFile = File.OpenText(file);
 
-                //If there are no end of the file, do readLine() and add the line to List<string>, 
-                //with .trim(), we will eliminate the front and end of whitespace
-                //If there are the end, leave the while loop
                 while (!inputFile.EndOfStream)
                 {
                     questionInString = inputFile.ReadLine();
@@ -72,7 +65,6 @@ namespace QuizGameApp2024
                     this.questionsList.Add(newQuestion);
                 }
 
-                //Always remembered to close the inputfile.
                 inputFile.Close();
 
                 //Shuffle the questionList
@@ -191,19 +183,14 @@ namespace QuizGameApp2024
                 //Casting the sender(capture the selected button)
                 Button button = sender as Button;
 
-                //To track the current question number
                 int currentQuestion = selectedQuestionIndex;
 
-                //The correct answer as int
                 int answerIndex = questionsList[currentQuestion].CorrectAnswerIndex;
 
-                //Stored the right answer (str)
                 string rightAnswer = questionsList[currentQuestion].Answers[answerIndex];
 
-                //Called the method( selected button's name), to changed the status of other buttons, to prevent double-clicking
                 isEnabledOnButtons(button.Name);
 
-                //Compared the selectedButton's Text and the rightAnswer 
                 if (button.Text.Equals(rightAnswer))
                 {
                     btnAnswer1.Enabled = false;
@@ -230,7 +217,7 @@ namespace QuizGameApp2024
                     picBoxIncorrect.Visible = true;
                     lblAnswer.Visible = true;
                     lblAnswer.Text = "Oops...";
-                    //"The correct answer is " + rightAnswer
+                    
                     picBoxIncorrect.Visible = true;
                     if (answerIndex == 0)
                     {
@@ -250,7 +237,6 @@ namespace QuizGameApp2024
                     }
                 }
 
-                //Update the score and questionCount after decision made.
                 lblPoints.Text = $"{score} Points";
                 selectedQuestionIndex++;
 
@@ -264,8 +250,8 @@ namespace QuizGameApp2024
                 {
                     btnNext.Visible = false;
                     clearBtn.Visible = true;
-                    //totalScoreMsglbl.Visible = true;
-                    //totalScoreMsglbl.Text = "Well Done! Your total score is " + lblPoints.Text;
+                    lblFinish.Visible = true;
+                    lblFinish.Text = $"Well Done! Your final score is {score}";
                 }
 
             }
@@ -280,8 +266,6 @@ namespace QuizGameApp2024
             }
         }
 
-
-        //To enabled the buttons, reset the text Label and display the next questions
         private void btnNext_Click(object sender, EventArgs e)
         {
             try
@@ -309,11 +293,9 @@ namespace QuizGameApp2024
                 lblAnswer.Visible = true;
                 lblPoints.Visible = true;
                 lblyourscore.Visible = true;
-                // To reset the popUpLabel;
                 lblAnswer.Text = "";
                 lblAnswer.Visible = false;
 
-                //Change the content of next question
                 lblQuestion.Text = questionsList[selectedQuestionIndex].Questions;
                 btnAnswer1.Text = questionsList[selectedQuestionIndex].Answers[0];
                 btnAnswer2.Text = questionsList[selectedQuestionIndex].Answers[1];
@@ -351,13 +333,11 @@ namespace QuizGameApp2024
                 Console.WriteLine("Successfully disposed old and create new Form.");
             }
         }
-
         private static void FisherYatesShuffle<T>(List<T> list)
         {
             Random random = new Random();
             int n = list.Count;
 
-            // Start from the end and swap elements with a random one
             for (int i = n - 1; i > 0; i--)
             {
                 int j = random.Next(0, i + 1);

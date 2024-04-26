@@ -45,6 +45,7 @@
             this.lblPresent2 = new System.Windows.Forms.Label();
             this.picMathlady = new System.Windows.Forms.PictureBox();
             this.btnAnswer4 = new System.Windows.Forms.Button();
+            this.lblFinish = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCorrect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxIncorrect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMathlady)).BeginInit();
@@ -272,6 +273,17 @@
             this.btnAnswer4.Visible = false;
             this.btnAnswer4.Click += new System.EventHandler(this.checkAnswer_Click);
             // 
+            // lblFinish
+            // 
+            this.lblFinish.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblFinish.Font = new System.Drawing.Font("Yu Gothic UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinish.Location = new System.Drawing.Point(369, 429);
+            this.lblFinish.Name = "lblFinish";
+            this.lblFinish.Size = new System.Drawing.Size(557, 88);
+            this.lblFinish.TabIndex = 18;
+            this.lblFinish.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFinish.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -279,6 +291,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.BackgroundImage = global::QuizGameApp2024.Properties.Resources.hand_drawn_question_mark_pattern_23_2149416651;
             this.ClientSize = new System.Drawing.Size(1310, 944);
+            this.Controls.Add(this.lblFinish);
             this.Controls.Add(this.picMathlady);
             this.Controls.Add(this.lblPresent2);
             this.Controls.Add(this.lblPresentation);
@@ -325,6 +338,7 @@
         private System.Windows.Forms.Label lblPresent2;
         private System.Windows.Forms.PictureBox picMathlady;
         private System.Windows.Forms.Button btnAnswer4;
+        private System.Windows.Forms.Label lblFinish;
     }
 }
 
